@@ -1,0 +1,11 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "https://cdn.rawgit.com/BinaryMuse/fluxxor/1.5.2/build/fluxxor.min.js" %>
+  <%= javascript_include_tag "application" %>
+<% end %>
+
+<%= react_component('Application', current_user: @current_user_json) %>
+
+<% content_for :foot do %>
+  <%= javascript_include_tag 'components' %>
+<% end %>
+

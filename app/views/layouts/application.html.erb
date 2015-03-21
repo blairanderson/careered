@@ -2,11 +2,16 @@
 <html>
 <head>
   <title><%= title %></title>
-  <%= favicon_link_tag "/favicon.ico" %>
+  <%# favicon_link_tag "/favicon.ico" %>
+  <script>
+    window.current_user = <%= raw(@current_user_json) %>;
+  </script>
   <%= stylesheet_link_tag "application", media: "all" %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
-  <%= javascript_include_tag "application" %>
+
+  <%= yield :head %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -14,7 +19,7 @@
 <div id="wrapper">
   <div id="header">
     <div class="header-logo">
-      <h1><a href="#/"><%= title %></a></h1>
+      <h1><%= link_to title, root_path %></h1>
     </div>
     <div class="header-user">
       <% if logged_in? %>
@@ -26,20 +31,18 @@
     </div>
   </div>
 
-  <div id="main clearfix">
+  <div id="main" class="clearfix">
     <%= yield %>
   </div>
 
   <div id="footer">
     <p>
-      <%= title %> inspired by <a href="https://github.com/somlor/kanban">SOmlor.</a> Defined by <%= link_to "Blair.", "https://github.com/blairanderson" %>.
+      <%= title %> inspired by <a href="https://github.com/somlor/kanban">SOmlor.</a> Defined
+      by <%= link_to "Blair.", "https://github.com/blairanderson" %>.
     </p>
   </div>
 
 </div>
-
-<script>
-  window.current_user = <%= raw(@current_user_json) %>;
-</script>
+<%= yield :foot %>
 </body>
 </html>
