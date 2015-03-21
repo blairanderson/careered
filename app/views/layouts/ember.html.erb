@@ -7,8 +7,6 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
-  <%= include_ember_script_tags :frontend %>
-  <%= include_ember_stylesheet_tags :frontend %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -44,10 +42,6 @@
   window.current_user = <%= raw(@current_user_json) %>;
 </script>
 <script>
-  debugger
-  if (Ember) {
-    debugger
-  }
 </script>
 </body>
 </html>
