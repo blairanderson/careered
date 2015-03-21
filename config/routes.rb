@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount EmberCLI::Engine => "ember-tests" if Rails.env.development?
+
   root to: "root#index"
   get "ember" => "root#ember"
   get "react" => "root#react"
