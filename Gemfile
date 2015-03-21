@@ -5,7 +5,10 @@ source 'https://rubygems.org'
 gem 'acts_as_list'
 gem 'acts-as-taggable-on'
 gem 'active_model_serializers'
+gem 'ember-cli-rails' # https://github.com/rwz/ember-cli-rails/blob/master/README.md
 gem 'rails', '4.2.0'
+gem 'rails_12factor', group: :production
+gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'pg'
 gem 'simple_enum'
 gem 'simple_form'

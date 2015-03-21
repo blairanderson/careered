@@ -14,3 +14,18 @@
 .DS_Store
 /.idea
 .idea/
+
+# compiled output
+/ember_client/dist
+/ember_client/tmp
+
+# dependencies
+/ember_client/node_modules
+/ember_client/bower_components
+# misc
+/ember_client/.sass-cache
+/ember_client/connect.lock
+/ember_client/coverage/*
+/ember_client/libpeerconnection.log
+/ember_client/npm-debug.log
+/ember_client/testem.log
