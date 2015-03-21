@@ -1,0 +1,12 @@
+<section class="login">
+  <h2>Log In</h2>
+  <%= simple_form_for @user, url: session_path, method: :post do |f| %>
+    <p>
+      <%= f.input :email %>
+    </p>
+    <p>
+      <%= f.input :password %>
+    </p>
+    <%= f.button :submit %>
+  <% end %>
+</section>
