@@ -18,12 +18,21 @@ Dir.chdir APP_ROOT do
   # end
 
   puts "\n== Preparing database =="
-  system "bin/rake db:setup"
+  system "bin/rake db:create db:migrate db:seed"
 
   puts "\n== Removing old logs and tempfiles =="
   system "rm -f log/*"
   system "rm -rf tmp/cache"
+  system "cp .env.example .env"
+  puts "Use file '.env' for your environment variables"
+
+  Dir.chdir "frontend/" do
+    system "ember install"
+    puts "attempt to run the ember tests with 'ember test'"
+    puts "run the ember serve with 'ember serve --proxy=http://localhost:3000'"
+  end
 
   puts "\n== Restarting application server =="
   system "touch tmp/restart.txt"
 end
+
