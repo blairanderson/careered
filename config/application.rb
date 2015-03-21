@@ -30,5 +30,10 @@ module Careered
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.react.addons = true # defaults to false
+    config.react.jsx_transform_options = {
+      harmony: true,
+      strip_types: true, # for removing Flow type annotations
+    }
   end
 end

@@ -6,8 +6,8 @@
   <%= stylesheet_link_tag "application", media: "all" %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag "https://cdn.rawgit.com/BinaryMuse/fluxxor/1.5.2/build/fluxxor.min.js" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag 'components' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -28,6 +28,7 @@
   </div>
 
   <div id="main clearfix">
+    <%= react_component('Application', current_user: @current_user_json) %>
     <%= yield %>
   </div>
 
@@ -42,5 +43,7 @@
 <script>
   window.current_user = <%= raw(@current_user_json) %>;
 </script>
+<%= javascript_include_tag 'components' %>
+
 </body>
 </html>
