@@ -15,17 +15,21 @@
 /.idea
 .idea/
 
-# compiled output
-/ember_client/dist
-/ember_client/tmp
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# compiled output
+/frontend/dist
+/frontend/tmp
 # dependencies
-/ember_client/node_modules
-/ember_client/bower_components
+/frontend/node_modules
+/frontend/bower_components
+
 # misc
-/ember_client/.sass-cache
-/ember_client/connect.lock
-/ember_client/coverage/*
-/ember_client/libpeerconnection.log
-/ember_client/npm-debug.log
-/ember_client/testem.log
+/frontend/.sass-cache
+/frontend/connect.lock
+/frontend/coverage/*
+/frontend/libpeerconnection.log
+/frontend/npm-debug.log
+/frontend/testem.log
+
+frontend/npm-debug.log
