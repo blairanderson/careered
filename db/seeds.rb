@@ -4,12 +4,12 @@
 
 data = {
   users: [
-    {username: "blair", email: "blair81@gmail.com", password: "password", password_confirmation: "password", session_key: nil, activation_key: nil, bio: "Rails hacker", full_name: "Blair Anderson"}
+    {username: "blair", email: "blair81@gmail.com", password: "password", password_confirmation: "password", bio: "Rails hacker", full_name: "Blair Anderson"}
   ],
   boards: [
-    {slug: :jobs, name: "Jobs", description: "Board for job hunting"},
-    {slug: :life, name: "Life", description: "Board for enjoying life"},
-    {slug: :ideas, name: "Ideas", description: "Board for ideas and projects and hobbies"}
+    {slug: :jobs, name: "Jobs", description: "Find a new job with intent. be organized and mindful. "},
+    {slug: :life, name: "Life", description: "SelfHelp is real. You must treat yo' self to the good life. "},
+    {slug: :ideas, name: "Ideas", description: "literally just straight up Board for ideas and projects and hobbies"}
   ],
   lists: [
     {board: :life, slug: :movement, position: 1, title: "Join Some Movements", description: "For Joining Movements", open: true},
@@ -67,11 +67,11 @@ end
 research = List.where(slug: :research).first
 if research
   cards.each do |card|
-    title, position = card['name'].split(" - ")
+    company, title = card['name'].split(" - ")
     card = research.cards.create({
         assignee_id: 1,
         title: title,
-        position: position,
+        company: company,
         url: card['desc']
       })
     puts "card: #{card.attributes}"

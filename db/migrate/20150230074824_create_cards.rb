@@ -10,11 +10,11 @@ class CreateCards < ActiveRecord::Migration
       t.string :url
       t.integer :assignee_id
       t.integer :position
-      t.integer :company_id
-      t.integer :salary
+      t.string :company
+      t.integer :salary, null: false, default: 0
 
       t.timestamps
     end
-    add_index :cards, :list_id
+    add_index :cards, :list_id, order: {position: :asc}
   end
 end

@@ -10,7 +10,7 @@ export default DS.Model.extend({
   url: DS.attr('string'),
   assigneeId: DS.attr(),
   position: DS.attr(),
-  companyId: DS.attr(),
+  company: DS.attr('string'),
   salary: DS.attr(),
   createdAt: DS.attr("date"),
   updatedAt: DS.attr("date"),

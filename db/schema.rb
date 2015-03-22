@@ -100,8 +100,8 @@ ActiveRecord::Schema.define(version: 20150320161231) do
     t.string   "url"
     t.integer  "assignee_id"
     t.integer  "position"
-    t.integer  "company_id"
-    t.integer  "salary"
+    t.string   "company"
+    t.integer  "salary",        default: 0,    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
