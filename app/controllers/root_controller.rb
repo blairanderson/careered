@@ -2,9 +2,17 @@ class RootController < ApplicationController
   before_action :authenticate_user
 
   def authenticate_user
-    unless logged_in?
-      redirect_to login_path
+    user = (api_user||current_user)
+    unless user
+      redirect_to login_path and return
     end
-    @current_user_json = UserSerializer.new(current_user).serializable_hash.to_json
+    @user = UserSerializer.new(user).serializable_hash
+    @boards = array_of(user.boards, BoardSerializer)
+    @lists =  array_of(user.lists, ListSerializer)
+    @cards = array_of(user.cards, CardSerializer)
+  end
+
+  def array_of(items=nil, serializer=nil)
+    return ActiveModel::ArraySerializer.new(items, each_serializer: serializer).serializable_array
   end
 end
