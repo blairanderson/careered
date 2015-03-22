@@ -1,0 +1,19 @@
+{{yield}}
+<button class="archive_card entypo-cancel" data-card-id="4"></button>
+<span class="card_title">{{card.position}} - {{card.title}} - {{card.description}}</span>
+<span class="salary">{{card.salary}}</span>
+<footer>
+  <p class="comments_count">
+    <span class="entypo-comment">comments:{{card.commentCount}}</span>
+  </p>
+
+  <div class="assignee">
+    {{card.url}}
+  </div>
+  <div class="assignee">
+    due: {{card.dueDate}}
+    open: {{card.open}}
+    company_id: {{card.companyId}}
+  </div>
+</footer>
+
