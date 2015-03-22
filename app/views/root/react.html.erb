@@ -1,9 +1,10 @@
 <% content_for :head do %>
-  <%= javascript_include_tag "https://cdn.rawgit.com/BinaryMuse/fluxxor/1.5.2/build/fluxxor.min.js" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "react" %>
+  <%= javascript_include_tag "react_ujs" %>
+  <%= javascript_include_tag "https://cdn.rawgit.com/BinaryMuse/fluxxor/1.5.2/build/fluxxor.min.js" %>
+  <%= javascript_include_tag "https://cdn.rawgit.com/rackt/react-router/master/build/global/ReactRouter.min.js" %>
 <% end %>
-
-<%= react_component('Application', current_user: @current_user_json) %>
 
 <% content_for :foot do %>
   <%= javascript_include_tag 'components' %>
