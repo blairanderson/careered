@@ -29,9 +29,6 @@
     &:hover, &:focus {
       background: #ccc;
       color: black;
-      svg {
-        fill: green;
-      }
       span {
         color: black;
       }
@@ -69,7 +66,7 @@
 @media (min-width: 1000px) {
   .main-nav {
     a {
-      max-width: 500px;
+      max-width: 300px;
       font-size: 2rem;
     }
     .icon {
