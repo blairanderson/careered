@@ -1,7 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function(slug) {
-    return this.store.find('board', {slug: slug});
+  beforeModel: function(transition) {
+    if (this.routeName === transition.targetName) {
+      return this.transitionTo("board.show", {board_id: param})
+    }
+  },
+  model: function() {
+    return this.store.find('board');
   }
 });
