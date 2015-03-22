@@ -1,0 +1,17 @@
+<nav role='navigation' class="main-nav" id="main-nav">
+  <ul id="main-nav-list">
+    <li>{{#link-to 'boards'}}
+      <div>Boards<span>Get Busy.</span></div>
+    {{/link-to}}</li>
+    {{#each board in model}}
+      <li>
+        {{#link-to 'boards.show' board}}
+          <div>{{board.name}}<span>{{board.description}}</span></div>
+        {{/link-to}}
+      </li>
+    {{/each}}
+  </ul>
+</nav>
+
+{{outlet}}
+
