@@ -1,0 +1,54 @@
+<div class="row">
+  <span>this row will hold meta data for the board. it will be invisible.</span>
+  <span>it will become visible by clicking on the board button.</span>
+  <div class="col-xs-12 panel">
+    {{model.name}}-{{model.description}}
+  </div>
+</div>
+
+<div class="lists_wrapper">
+  <div class="lists_inner_wrapper">
+    <section class="lists ui-sortable">
+      <!--Sort the lists by position-->
+      {{#each list in model.lists}}
+
+        <div class="list">
+          <div class="add_card">
+            <form class="add_card" data-list-id="7">
+              <input type="text" class="card_title" name="card[title]" placeholder="Add a card ...">
+              <input type="submit" value="Add Card">
+            </form>
+          </div>
+          <header class="list_title">
+            open: {{list.open}}
+            <span class="edit js-edit-list-title">
+              {{list.position}} - {{list.title}}
+            </span>
+            <button class="archive_list entypo-cancel" data-list-id="7"></button>
+            <span>
+              {{list.description}}
+            </span>
+            <span> - {{list.createdAt}}</span>
+          </header>
+
+          <section class="cards">
+            <div>
+              <div class="cards ui-sortable" id="cards_list_7" data-list-id="7">
+                {{#each card in list.cards}}
+                  <div class="card ui-droppable" id="card_4" data-card-id="4">
+                    {{card-component card=card}}
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+          </section>
+
+        </div>
+      {{/each}}
+    </section>
+
+  </div>
+</div>
+
+
+
