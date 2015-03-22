@@ -1,2 +1,0 @@
-web: rails s
-ember: sh -c 'cd ./frontend/ && ember serve --proxy http://127.0.0.1:3000'
