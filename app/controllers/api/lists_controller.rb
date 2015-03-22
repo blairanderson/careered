@@ -1,30 +1,28 @@
 module Api
   class ListsController < ApplicationController
-    respond_to :json
-
     def index
-      @lists = current_user.lists
+      render json: current_user.lists
     end
 
     def show
-      @list = current_user.lists.find(params[:id])
+      render json: current_user.lists.find(params[:id])
     end
 
     def create
-    	list = List.new(params[:list])
+    	list = List.new(list_params)
     	if list.save
     		render json: list, status: :ok
-    	else
-    		render nothing: true, status: :unprocessable_entity
+      else
+    		render json: list.errors, status: :unprocessable_entity
     	end
     end
 
     def update
       list = current_user.lists.find(params[:id])
-      if list.update_attributes(params[:list])
+      if list.update_attributes(list_params)
         render json: list, status: :ok
       else
-        render nothing: true, status: :unprocessable_entity
+        render json: list.errors, status: :unprocessable_entity
       end
     end
 
@@ -33,7 +31,7 @@ module Api
 			if list.destroy
 				render json: list, status: :ok
 			else
-				render nothing: true, status: :unprocessable_entity
+				render json: list.errors, status: :unprocessable_entity
 			end
     end
 
@@ -41,7 +39,7 @@ module Api
       list_ids = params[:list].map(&:to_i)
 
       unless (list_ids - current_user.list_ids).empty?
-      	render nothing: true, status: :unauthorized
+      	render nothing: true, status: :unprocessable_entity
       end
 
       list_ids.each_with_index do |id, index|
@@ -49,8 +47,12 @@ module Api
       end
 
       # return re-sorted lists
-      @lists = List.find(list_ids.first).board.lists
+      render json: current_user.lists.reload
     end
 
+    private
+    def list_params
+      params.require(:list).permit!
+    end
   end
 end

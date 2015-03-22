@@ -1,13 +1,11 @@
 module Api
   class CardsController < ApplicationController
-    respond_to :json
-
     def index
-      @cards = current_user.cards
+      render json: current_user.cards
     end
 
     def show
-      @card = current_user.cards.find(params[:id])
+      render json: current_user.cards.find(params[:id])
     end
 
     def create
@@ -15,7 +13,7 @@ module Api
     	if card.save
     		render json: card, status: :ok
     	else
-    		render nothing: true, status: :unprocessable_entity
+    		render json: card.errors, status: :unprocessable_entity
     	end
     end
 
@@ -24,7 +22,7 @@ module Api
     	if card.update_attributes(params[:card])
         render json: card, status: :ok
       else
-        render nothing: true, status: :unprocessable_entity
+        render json: card.errors, status: :unprocessable_entity
       end
     end
 
@@ -33,7 +31,7 @@ module Api
 			if card.destroy
 				render json: card, status: :ok
 			else
-				render nothing: true, status: :unprocessable_entity
+				render json: card.errors, status: :unprocessable_entity
 			end
     end
 
@@ -50,7 +48,7 @@ module Api
                         { id: id })
       end
 
-      @cards = @list.cards.where(id: card_ids)
+      @cards = @list.cards.reload
     end
 
   end
