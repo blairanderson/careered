@@ -2,7 +2,7 @@ var { Route, DefaultRoute, RouteHandler, Link } = ReactRouter;
 var data = window.data;
 
 var Application = React.createClass({
-  getInitialState: function () {
+  getInitialState: function() {
     return {
       user: data.user,
       boards: data.boards,
@@ -14,13 +14,13 @@ var Application = React.createClass({
   render: function() {
     var links = this.state.boards.map(function(board, i) {
       return (
-              <li key={board.slug}>
-                <Link
-                    to="board"
-                    params={{slug: board.slug}}
-                    >{board.title}</Link>
-              </li>
-            );
+        <li key={board.slug}>
+          <Link
+            to="board"
+            params={{slug: board.slug}}
+          >{board.title}</Link>
+        </li>
+      );
     });
     return (
       <div>
@@ -35,13 +35,13 @@ var Application = React.createClass({
 });
 
 var Index = React.createClass({
-  render: function () {
+  render: function() {
     return <h1>Select a board!</h1>;
   }
 });
 
-function findBoard(slug){
-  return window.data.boards.find(function(board){
+function findBoard(slug) {
+  return window.data.boards.find(function(board) {
     return board.slug === slug;
   });
 }
@@ -51,7 +51,7 @@ var Board = React.createClass({
     router: React.PropTypes.func.isRequired
   },
 
-  render: function () {
+  render: function() {
     var slug = this.context.router.getCurrentParams().slug;
     var board = findBoard(slug);
     debugger
@@ -70,6 +70,6 @@ var routes = (
   </Route>
 );
 
-ReactRouter.run(routes, function (Handler) {
+ReactRouter.run(routes, function(Handler) {
   React.render(<Handler/>, document.getElementById('main'));
 });
