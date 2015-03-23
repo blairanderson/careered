@@ -5,15 +5,21 @@ source 'https://rubygems.org'
 gem 'acts_as_list'
 gem 'acts-as-taggable-on'
 gem 'active_model_serializers'
-gem "ember-cli-rails"
+gem 'pg'
 gem 'rails', '4.2.0'
 gem 'rails_12factor', group: :production
-gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
-gem 'pg'
 gem 'simple_enum'
 gem 'simple_form'
 gem 'sorcery'
 gem 'thin'
+
+
+# Ember
+gem 'ember-cli-rails'
+# React
+gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
+gem 'react-router-rails', '~>0.11.6.1'
+
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'

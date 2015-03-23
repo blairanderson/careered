@@ -9,6 +9,7 @@ var Board = React.createClass({
   },
 
   render: function() {
+    debugger
     var board = this.props.board;
     return (
       <div>

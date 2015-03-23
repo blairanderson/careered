@@ -1,7 +1,7 @@
 var { Route, DefaultRoute, RouteHandler, Link } = ReactRouter;
 var data = window.data;
 
-var Application = React.createClass({
+var ReactApp = React.createClass({
   getInitialState: function() {
     return {
       user: data.user,
@@ -11,28 +11,44 @@ var Application = React.createClass({
     };
   },
 
-  render: function() {
-    var links = this.state.boards.map(function(board, i) {
+  getNavLinks: function() {
+    return this.state.boards.map(function(board) {
       return (
         <li key={board.slug}>
           <Link
             to="board"
-            params={{slug: board.slug}}
-          >{board.title}</Link>
+            params={{slug: board.slug}}>
+            <div>{board.name}
+              <span>{board.description}</span>
+            </div>
+          </Link>
         </li>
       );
     });
+  },
+
+  render: function() {
+    var links = this.getNavLinks();
     return (
       <div>
-        <div>Current User: {this.state.user.full_name}</div>
-        <ul> {links} </ul>
-        <div class="detail">
+        <nav role='navigation' className="main-nav" id="main-nav">
+          <ul id="main-nav-list">
+            <li>
+              <a>
+                <div>Boards <span>Get Busy.</span></div>
+              </a>
+            </li>
+          {{links}}
+          </ul>
+        </nav>
+        <div>
           <RouteHandler/>
         </div>
       </div>
-    );
+    )
   }
 });
+
 
 var Index = React.createClass({
   render: function() {
@@ -61,15 +77,4 @@ var Board = React.createClass({
       </div>
     );
   }
-});
-
-var routes = (
-  <Route name="app" path={window.location.pathname} handler={Application}>
-    <DefaultRoute handler={Index}/>
-    <Route name="board" path="board/:slug" handler={Board}/>
-  </Route>
-);
-
-ReactRouter.run(routes, function(Handler) {
-  React.render(<Handler/>, document.getElementById('main'));
 });

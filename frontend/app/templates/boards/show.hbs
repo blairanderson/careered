@@ -13,23 +13,20 @@
       {{#each list in model.lists}}
 
         <div class="list">
+          <header class="list_title">
+            <span class="edit">
+              {{list.title}}
+            </span>
+            <span>
+              {{list.description}}
+            </span>
+          </header>
           <div class="add_card">
             <form class="add_card" data-list-id="7">
               <input type="text" class="card_title" name="card[title]" placeholder="Add a card ...">
               <input type="submit" value="Add Card">
             </form>
           </div>
-          <header class="list_title">
-            open: {{list.open}}
-            <span class="edit js-edit-list-title">
-              {{list.position}} - {{list.title}}
-            </span>
-            <button class="archive_list entypo-cancel" data-list-id="7"></button>
-            <span>
-              {{list.description}}
-            </span>
-            <span> - {{list.createdAt}}</span>
-          </header>
 
           <section class="cards">
             <div>

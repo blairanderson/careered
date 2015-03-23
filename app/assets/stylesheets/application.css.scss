@@ -595,15 +595,8 @@ section.board-show { }
     box-shadow:         5px 5px 5px rgba(50, 50, 50, 0.5);
   }
 
-  div.add_card {
-    margin-top: 20px;
-  }
-
-  section.card_detail { }
-
-	.card_detail .members {
-//		float: right;
-	}
+  section.card_detail {}
+	.card_detail .members {}
 	.card_detail .members img {
 		display: inline-block;
 	}
