@@ -1,6 +1,21 @@
 #!/usr/bin/env ruby
 require 'pathname'
 
+class MySetupCLI < Thor
+  desc "env setup", "ask for environment variables and write them to the file."
+
+  def foo
+    puts "Use file '.env' for your environment variables"
+    system "cp .env.example .env"
+
+
+    ask "What is your favorite name?"
+
+    puts "Hello #{name}"
+  end
+end
+
+
 # path to your application root.
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
 
@@ -23,8 +38,8 @@ Dir.chdir APP_ROOT do
   puts "\n== Removing old logs and tempfiles =="
   system "rm -f log/*"
   system "rm -rf tmp/cache"
-  system "cp .env.example .env"
-  puts "Use file '.env' for your environment variables"
+  # MySetupCLI.start
+
 
   Dir.chdir "frontend/" do
     system "ember install"

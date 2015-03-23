@@ -7,8 +7,8 @@ class RootController < ApplicationController
       redirect_to login_path and return
     end
     @user = UserSerializer.new(user).serializable_hash
-    @boards = array_of(user.boards, BoardSerializer)
-    @lists =  array_of(user.lists, ListSerializer)
+    @boards = array_of(user.boards.includes(:lists), BoardSerializer)
+    @lists =  array_of(user.lists.includes(:cards), ListSerializer)
     @cards = array_of(user.cards, CardSerializer)
   end
 
