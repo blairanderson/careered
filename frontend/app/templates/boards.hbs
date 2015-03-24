@@ -4,11 +4,11 @@
       <div>Boards<span>Get Busy.</span></div>
     {{/link-to}}</li>
     {{#each board in model}}
-      <li>
-        {{#link-to 'boards.show' board}}
+      {{#link-to 'boards.show' board}}
+        <li>
           <div>{{board.name}}<span>{{board.description}}</span></div>
-        {{/link-to}}
-      </li>
+        </li>
+      {{/link-to}}
     {{/each}}
   </ul>
 </nav>

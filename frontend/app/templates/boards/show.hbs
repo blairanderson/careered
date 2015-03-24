@@ -1,25 +1,24 @@
-<div class="row">
-  <span>this row will hold meta data for the board. it will be invisible.</span>
-  <span>it will become visible by clicking on the board button.</span>
-  <div class="col-xs-12 panel">
-    {{model.name}}-{{model.description}}
+{{#if isExpanded}}
+  <div class="row" {{action 'contract'}}>
+    <span>this row will hold meta data for the board. it will be invisible.</span>
+    <span>it will become visible by clicking on the board button.</span>
+
+    <div class="col-xs-12 panel">
+      {{model.name}}-{{model.description}}
+    </div>
   </div>
-</div>
+{{else}}
+  <button {{action 'expand'}}>Show...</button>
+{{/if}}
 
 <div class="lists_wrapper">
   <div class="lists_inner_wrapper">
     <section class="lists ui-sortable">
-      <!--Sort the lists by position-->
       {{#each list in model.lists}}
-
-        <div class="list">
+        {{#list-component list=list lists=model.lists cards=list.cards}}
           <header class="list_title">
-            <span class="edit">
-              {{list.title}}
-            </span>
-            <span>
-              {{list.description}}
-            </span>
+            <span class="edit">{{list.title}}</span>
+            <span>{{list.description}}</span>
           </header>
           <div class="add_card">
             <form class="add_card" data-list-id="7">
@@ -27,23 +26,9 @@
               <input type="submit" value="Add Card">
             </form>
           </div>
-
-          <section class="cards">
-            <div>
-              <div class="cards ui-sortable" id="cards_list_7" data-list-id="7">
-                {{#each card in list.cards}}
-                  <div class="card ui-droppable" id="card_4" data-card-id="4">
-                    {{card-component card=card}}
-                  </div>
-                {{/each}}
-              </div>
-            </div>
-          </section>
-
-        </div>
+        {{/list-component}}
       {{/each}}
     </section>
-
   </div>
 </div>
 

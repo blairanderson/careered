@@ -475,18 +475,19 @@ section.board-show { }
   	background: transparent;
   	color: #4d4d4d;
 
-  	position: absolute;
-  	top: 0px;
-  	right: 0px;
-  	font-size: 12px;
-
     width: 17px;
     height: 20px;
+    float: right;
 
     opacity: 0;
     -webkit-transition: .6s;
     -moz-transition: .6s;
     transition: .6s;
+  }
+
+  .card_url {
+    display:block;
+    word-wrap:break-word !important;
   }
 
   .card:hover button.archive_card {

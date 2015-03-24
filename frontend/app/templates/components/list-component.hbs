@@ -1,0 +1,12 @@
+{{yield}}
+<section class="cards">
+  <div>
+    <div class="cards ui-sortable">
+      {{#each card in cards}}
+        {{#card-component card=card lists=lists}}
+        {{/card-component}}
+      {{/each}}
+    </div>
+  </div>
+</section>
+
