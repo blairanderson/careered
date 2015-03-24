@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount EmberCLI::Engine => "/ember-tests"
+
   root to: "root#index"
   get "ember" => "root#ember"
   get "ember/:id" => "root#ember"
@@ -32,6 +34,6 @@ Rails.application.routes.draw do
     resources :card_comments, only: [:index, :create, :destroy]
   end
 
-  get ":id" => "application#not_found", as: :not_found
-  get "*/*" => "application#not_found"
+  # get ":id" => "application#not_found", as: :not_found
+  # get "*/*" => "application#not_found"
 end

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
+
   def not_found
     if current_user && board = current_user.boards.find(params[:id])
       redirect_to "#{ember_path}?board_id=#{board.id}"
@@ -16,6 +17,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
-
-
 end
