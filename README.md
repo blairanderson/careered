@@ -1,3 +1,5 @@
+
+
 # Making Careed.
 
 ### Make your own opinions
@@ -21,8 +23,5 @@ I find inspiration from growth and learning(being smarter than other people).
 
 I find projects to get excited about and start to challenge myself.
 
-Right now i'm on the hunt for a solid job. So i decided to build a trello clone to track my jobs.
+Right now i'm on the hunt,  for a solid job. So I decided to build a trello clone to track my jobs.
 
-# I would build it in *react* && *ember*
-
-I would put them both on a rails api. I would get stuck on things. 
