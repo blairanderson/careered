@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%= render 'shared/new_relic' %>
   <title><%= title %></title>
-  
-  <script>
-    window.data = <%= raw({
-    user: @user,
-    boards: @boards,
-    lists: @lists,
-    cards: @cards
-  }.to_json) %>;
-
-  </script>
+  <% if @current_user_data %>
+    <script>window.data = <%= raw(@current_user_data) %>;</script>
+  <% end %>
   <%= stylesheet_link_tag "application", media: "all" %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>

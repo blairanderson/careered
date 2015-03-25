@@ -33,7 +33,4 @@ Rails.application.routes.draw do
     end
     resources :card_comments, only: [:index, :create, :destroy]
   end
-
-  # get ":id" => "application#not_found", as: :not_found
-  # get "*/*" => "application#not_found"
 end

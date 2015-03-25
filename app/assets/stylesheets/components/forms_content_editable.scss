@@ -1,0 +1,34 @@
+@-webkit-keyframes cursorPulse {
+  from {
+//    border-left: 3px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+  }
+  50% {
+//    border-left: 3px solid #000000;
+    border-bottom: 1px solid #000000;
+  }
+  to {
+//    border-left: 3px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+  }
+}
+
+.edit{
+  border: 1px solid #ffffff;
+  &.salary {
+    float: right;
+    color: green;
+  }
+  &[contenteditable="true"] {
+    border: 1px solid #ffffff;
+    -webkit-animation-name: cursorPulse;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    &:focus {
+      outline: -webkit-focus-ring-color auto 0px;
+    }
+  }
+
+}
+
+
