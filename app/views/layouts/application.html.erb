@@ -2,6 +2,7 @@
 <html>
 <head>
   <title><%= title %></title>
+  
   <script>
     window.data = <%= raw({
     user: @user,
@@ -14,36 +15,23 @@
   <%= stylesheet_link_tag "application", media: "all" %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
-
   <%= yield :head %>
-
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 
 <div id="wrapper">
   <div id="header">
-    <div class="header-logo">
-      <h1><%= link_to title, root_path %></h1>
-    </div>
-    <div class="header-user">
-      <% if logged_in? %>
-        <%= link_to image_tag(current_user.gravatar_url(30), class: "avatar"), "#" %>
-        <p>(<%= link_to "logout", logout_path %>)</p>
-      <% else %>
-        <p><%= link_to "login", login_path %></p>
-      <% end %>
-    </div>
+    <%= render 'layouts/navigation' %>
   </div>
 
-  <div id="main" class="clearfix">
+  <div id="main">
     <%= yield %>
   </div>
 
   <div id="footer">
-    <p>
-      <%= title %> by <%= link_to "Blair.", "https://github.com/blairanderson" %>
-    </p>
+    <p><%= title %> by <%= link_to "Blair.", "https://github.com/blairanderson" %></p>
   </div>
 
 </div>

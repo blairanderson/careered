@@ -1,0 +1,11 @@
+<div class="header-logo">
+  <h1><%= link_to title, root_path %></h1>
+</div>
+<div class="header-user">
+  <% if logged_in? %>
+    <%= link_to image_tag(current_user.gravatar_url(30), class: "avatar"), root_path %>
+    <p>(<%= link_to "logout", logout_path %>)</p>
+  <% else %>
+    <p><%= link_to "login", login_path %></p>
+  <% end %>
+</div>
