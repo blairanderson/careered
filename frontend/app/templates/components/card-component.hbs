@@ -1,29 +1,33 @@
+<div class="select">
+  {{view "select"
+  content=lists
+  optionValuePath="content.slug"
+  optionLabelPath="content.title"}}
+</div>
 {{#if isEditing}}
-  <button {{action 'save'}}>save.</button>
+  <i {{action 'save'}} class="g-icon g-icon-done"></i>
 {{else}}
-  <button {{action 'edit'}}>edit.</button>
+  <i {{action 'edit'}} class="g-icon g-icon-mode-edit"></i>
 {{/if}}
 <button class="archive_card entypo-cancel">x</button>
-<span class="edit salary" style="float: right; color: green;"  {{bind-attr contentEditable=isEditing}}>${{card.salary}}</span>
+<span class="edit salary"
+      style=""  {{bind-attr contentEditable=isEditing}}>${{card.salary}}</span>
 <span class="edit card_title"  {{bind-attr contentEditable=isEditing}}>{{card.company}}</span>
 <span class="edit card_title" {{bind-attr contentEditable=isEditing}}>{{card.title}}</span>
-
-{{#if isEditing}}
-  {{list}}
-  {{view "select"
-    content=lists
-    optionValuePath="content.slug"
-    optionLabelPath="content.title"}}
-{{/if}}
-
 {{yield}}
 
-<span class="edit card_url"  {{bind-attr contentEditable=isEditing}}>{{card.url}}</span>
+{{#if isEditing}}
+  <span class="edit card_url"  {{bind-attr contentEditable=isEditing}}>{{card.url}}</span>
+{{else}}
+  <i class="g-icon g-icon-link">{{urlHOST}}</i>
+{{/if}}
+
+
 <footer>
   <div class="assignee">
 
   </div>
-  <p class="comments_count">
+<p class="comments_count">
   {{#if card.dueDate}}
     <div class="assignee">
       due: {{card.dueDate}}
