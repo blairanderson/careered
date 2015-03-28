@@ -1,5 +1,5 @@
 class RootController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user, except: [:index]
 
   def authenticate_user
     user = (api_user||current_user)

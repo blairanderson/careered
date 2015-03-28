@@ -1,5 +1,5 @@
 module Api
-  class CardCommentsController < ApplicationController
+  class CardCommentsController < ApiController
     def create
       card = current_user.cards.find(params[:card_comment][:card_id])
       params[:card_comment][:commenter_id] = current_user.id
@@ -11,6 +11,5 @@ module Api
         render json: comment.errors, status: :unprocessable_entity
       end
     end
-    
   end
 end

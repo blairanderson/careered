@@ -1,6 +1,5 @@
 module Api
-  class BoardsController < ApplicationController
-    before_filter :require_login
+  class BoardsController < ApiController
     def index
       render json: current_user.boards.includes(lists: [:cards])
     end

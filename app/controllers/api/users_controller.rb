@@ -1,7 +1,5 @@
 module Api
-  class UsersController < ApplicationController
-    respond_to :json
-
+  class UsersController < ApiController
     def show
       render json: User.find(params[:id])
     end

@@ -1,5 +1,5 @@
 module Api
-  class CardsController < ApplicationController
+  class CardsController < ApiController
     def index
       render json: current_user.cards
     end
