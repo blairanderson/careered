@@ -18,7 +18,7 @@ export default Ember.Component.extend({
     },
 
     save: function(){
-      this.set('isEditing', false)
+      this.set('isEditing', false);
     }
   }
 });
