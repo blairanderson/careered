@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :listings
+
   mount EmberCLI::Engine => "/ember-tests"
 
   root to: "root#index"

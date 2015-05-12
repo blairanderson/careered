@@ -1,0 +1,22 @@
+<% @listings.each do |listing| %>
+  <div id="jobs-table" class="jobs-list jobs-list-margin">
+    <div class="job featured <%= listing.job_type %>">
+      <div class="row">
+        <div class="details col-sm-10 col-xs-8">
+          <div class="details">
+            <div class="title">
+              <%= link_to(listing.job_title, listing) %>
+            </div>
+            <div class="company"><%= listing.company_name %></div>
+            <div class="location">
+              <%= listing.job_locations %>
+            </div>
+          </div>
+        </div>
+        <div class="date col-sm-2 col-xs-4">
+          <%= time_ago_in_words(listing.updated_at) %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

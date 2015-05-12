@@ -1,0 +1,41 @@
+<div class="content-well">
+  <h1 itemprop="title"><%= @listing.job_title %></h1>
+
+  <h2>
+    <span itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
+      <span itemprop="name">
+        <%= link_to @listing.company_name, @listing.company_url %>
+      </span>
+    </span>
+    <span class="job-location">
+      <span itemprop="jobLocation" itemscope="" itemtype="http://schema.org/Place">
+        (<span itemscope="" itemtype="http://schema.org/PostalAddress">
+          <span itemprop="addressLocality"><%= @listing.job_locations %></span>
+        </span>)
+      </span>
+    </span>
+  </h2>
+
+  <div class="job-posting-date">
+    <% if @listing.company_logo.present? %>
+      <%= image_tag(@listing.company_logo) %>
+    <% end %>
+
+    Posted: <span itemprop="datePosted"><%= @listing.updated_at %></span>
+    <span class="job-type">| Job Type: <span itemprop="employmentType"><%= @listing.job_type.to_s.titleize %></span></span>
+  </div>
+
+
+  <div class="job-listing-body" itemprop="description">
+    <%= @listing.description.html_safe %>
+  </div>
+  <div class="job-listing-block">
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <a class="btn btn-primary btn-lg btn-apply" rel="nofollow" href="<%= @listing.contact_email %>">
+          Apply to this Job <span class="glyphicon glyphicon-comment"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

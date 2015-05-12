@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320161231) do
+ActiveRecord::Schema.define(version: 20150423053500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,22 @@ ActiveRecord::Schema.define(version: 20150320161231) do
   end
 
   add_index "cards", ["list_id"], name: "index_cards_on_list_id", using: :btree
+
+  create_table "listings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "expired_at"
+    t.string   "job_title",         default: "job title",                                  null: false
+    t.string   "job_locations",     default: "where can the human work from?",             null: false
+    t.integer  "job_type_enum",     default: 0,                                            null: false
+    t.text     "description",       default: "This is your job description. make it cool", null: false
+    t.string   "company_name",      default: "the company name",                           null: false
+    t.string   "company_url",       default: "",                                           null: false
+    t.text     "company_logo"
+    t.integer  "how_to_apply_enum", default: 0,                                            null: false
+    t.string   "contact_email",     default: "your email here@gmail.com",                  null: false
+    t.datetime "created_at",                                                               null: false
+    t.datetime "updated_at",                                                               null: false
+  end
 
   create_table "lists", force: :cascade do |t|
     t.integer  "board_id",                     null: false

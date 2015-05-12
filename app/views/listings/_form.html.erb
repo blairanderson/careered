@@ -1,0 +1,67 @@
+<% content_for :head do %>
+  <%= javascript_include_tag("https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js") %>
+  <%= javascript_include_tag("https://cdn.rawgit.com/kumailht/gridforms/2552c2345b11f8b97e93a1b39ffdf2c9b3c21b1b/gridforms/gridforms.js") %>
+  <%= stylesheet_link_tag("https://cdn.rawgit.com/kumailht/gridforms/2552c2345b11f8b97e93a1b39ffdf2c9b3c21b1b/gridforms/gridforms.css") %>
+<% end %>
+<%= simple_form_for(@listing, html: {class: "grid-form"}) do |f| %>
+  <%= f.error_notification %>
+  <fieldset>
+    <legend>Post a Rad React Job:</legend>
+    <div data-row-span="10">
+      <div data-field-span="5">
+        <label for="listing_job_title">job_title</label>
+        <%= f.input :job_title, label: false %>
+      </div>
+      <div data-field-span="5">
+        <label for="listing_job_locations">job_locations</label>
+        <%= f.input :job_locations, label: false %>
+      </div>
+    </div>
+    <div data-row-span="12">
+      <div data-field-span="5">
+        <label for="listing_job_type ">job_type</label>
+        <% Listing.job_types.each do |name, value| %>
+          <% id = "listing_job_type_#{name}" %>
+          <input id="<%= id %>" name="listing[job_type]" value="<%= value %>" type="radio"><label for="id="<%= id %>""><%= name.to_s.titleize %></label>
+        <% end %>
+      </div>
+      <div data-field-span="4">
+        <label for="listing_company_name ">company_name</label>
+        <%= f.input :company_name, label: false %>
+      </div>
+      <div data-field-span="3">
+        <label for="listing_company_url">company_url</label>
+        <%= f.input :company_url, label: false %>
+      </div>
+    </div>
+
+    <div data-row-span="3">
+      <div data-field-span="1">
+        <label for="listing_company_logo">company_logo</label>
+        <%= f.input :company_logo, label: false %>
+      </div>
+      <div data-field-span="2">
+        <label for="listing_description">description</label>
+        <%= f.input :description, label: false %>
+      </div>
+    </div>
+    <div data-row-span="12">
+      <div data-field-span="3">
+          <label for="listing_how_to_apply_enum">How To Apply</label>
+          <% Listing.how_to_applies.each do |name, value| %>
+            <% id = "listing_how_to_apply_enum#{name}" %>
+            <input id="<%= id %>" name="listing[how_to_apply]" value="<%= value %>" type="radio"><label for="id="<%= id %>""><%= name.to_s.titleize %></label>
+          <% end %>
+      </div>
+      <div data-field-span="9">
+        <label for="listing_contact_email">Contact Email</label>
+        <%= f.input :contact_email, label: false %>
+      </div>
+    </div>
+    <div data-row-span="1">
+      <div data-field-span="1" style="padding: 0px">
+        <%= f.button :submit, class: "btn btn-block", style: "height: 47px;font-size: 5vh;line-height: 5vh;" %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

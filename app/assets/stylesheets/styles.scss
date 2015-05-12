@@ -671,7 +671,7 @@ input[type="text"]:focus {
   background: white;
 }
 
-form input[type="submit"] {
+form input[type="submit"].transparent {
   overflow: hidden;
   opacity: 0;
   height: 0;
@@ -682,9 +682,9 @@ form input[type="submit"] {
   transition: .2s;
 }
 
-form:hover input[type="submit"],
-textarea:focus + input[type="submit"],
-input:focus + input[type="submit"] {
+form:hover input[type="submit"].transparent,
+textarea:focus + input[type="submit"].transparent,
+input:focus + input[type="submit"].transparent {
   opacity: 1;
   height: auto;
   max-height: 100px;

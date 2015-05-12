@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/rails/spring.git
+  revision: f18afb8c5ac951b7553c812482d491001b1425a8
+  specs:
+    spring (1.3.4)
+
+GIT
   remote: git://github.com/reactjs/react-rails.git
   revision: abd5171863bef2b426b0d6ca1354ec55679ed15a
   specs:
@@ -180,7 +186,6 @@ GEM
       bcrypt (~> 3.1)
       oauth (~> 0.4, >= 0.4.4)
       oauth2 (>= 0.8.0)
-    spring (1.3.3)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -230,7 +235,7 @@ DEPENDENCIES
   simple_enum
   simple_form
   sorcery
-  spring
+  spring!
   thin
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
